@@ -1,10 +1,10 @@
 import pandas as pd
 
-def load_staff_availability(df):
+def load_staff_availability(staff_df):
     staff = []
-    for _, row in df.iterrows():
-        available_days = [day.strip() for day in row["Available Days"].split(",")]
-        available_times = [int(time.strip().replace(":00", "")) for time in row["Available Times"].split(",")]
+    for _, row in staff_df.iterrows():
+        available_days = [day.strip() for day in str(row["Available Days"]).split(",")]
+        available_times = [int(time.strip()) for time in str(row["Available Times"]).split(",")]
         staff.append({
             "name": row["Name"],
             "available_days": available_days,
